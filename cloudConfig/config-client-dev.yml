@@ -1,0 +1,8 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: config-client
+logging:
+  level:
+    com: debug
