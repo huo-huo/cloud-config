@@ -16,7 +16,7 @@ spring:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
     consumer:
-      group-id: queue-kafka
+      group-id: queue-kafka-group-1
       auto-offset-reset: earliest
       enable-auto-commit: true
       auto-commit-interval: 100
