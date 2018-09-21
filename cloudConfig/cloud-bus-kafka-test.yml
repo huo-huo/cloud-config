@@ -7,6 +7,16 @@ spring:
   kafka:
     # 指定kafka 代理地址，可以多个
     bootstrap-servers: dms-kafka.cn-north-1.myhuaweicloud.com:37003
+    ssl:
+      truststore:
+        locationssl:
+          truststore:
+            location: classpath:client.truststore.jks
+            password: dms@kafka
+    security:
+      protocol: SASL_SSL
+    sasl:
+      mechanism: DMS
     producer:
       retries: 0
       # 每次批量发送消息的数量
@@ -15,11 +25,16 @@ spring:
       # 指定消息key和消息体的编解码方式
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+
     consumer:
-      group-id: queue-kafka-group-1
+      group-id: g-c9e8e62a-61bf-45a3-be8b-54329537a6a1
       auto-offset-reset: earliest
       enable-auto-commit: true
       auto-commit-interval: 100
       # 指定消息key和消息体的编解码方式
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      max:
+        idle:
+          ms: 30000
